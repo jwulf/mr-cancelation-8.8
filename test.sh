@@ -48,8 +48,6 @@ if [[ -z "$PROCESS_INSTANCE_KEY" || "$PROCESS_INSTANCE_KEY" == "null" ]]; then
   exit 1
 fi
 
-PROCESS_INSTANCE_KEY=2251799813685370
-
 echo "Calling cancellation for processInstanceKey=$PROCESS_INSTANCE_KEY" >&2
 CANCEL_RESPONSE_STATUS=$(curl -s -o /dev/null -w '%{http_code}' -X POST \
   "http://localhost:8080/v2/process-instances/$PROCESS_INSTANCE_KEY/cancellation" \
