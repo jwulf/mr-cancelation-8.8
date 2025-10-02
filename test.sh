@@ -24,7 +24,7 @@ if [[ -z "$PROCESS_DEFINITION_KEY" ]]; then
 fi
 
 # Treat processDefinitionKey as string (spec shows it as string in responses)
-CREATE_PAYLOAD=$(jq -n --arg k "$PROCESS_DEFINITION_KEY" '{processDefinitionKey: $k, variables: {}}')
+CREATE_PAYLOAD=$(jq -n --arg k "$PROCESS_DEFINITION_KEY" '{processDefinitionKey: $k, variables: {}, runtimeInstructions: [{ type: "TERMINATE_PROCESS_INSTANCE", afterElementId: "Activity_106kosb" }]}' )
 PROCESS_INSTANCE_RESPONSE=$(curl -s -X POST \
   'http://localhost:8080/v2/process-instances' \
   -H 'Content-Type: application/json' \
