@@ -35,28 +35,4 @@ services:
       interval: 5s
       timeout: 3s
       retries: 30
-    networks:
-      - camunda-net
 
-  # connectors:
-  #   image: camunda/connectors-bundle:SNAPSHOT
-  #   container_name: camunda-connectors
-  #   depends_on:
-  #     camunda:
-  #       condition: service_healthy
-  #   environment:
-  #     # Adapted from runtime: service name + internal port
-  #     ZEEBE_CLIENT_BROKER_GATEWAY-ADDRESS: "camunda:26500"
-  #     ZEEBE_CLIENT_SECURITY_PLAINTEXT: "true"
-  #     # Optional additional env you might pass via framework (placeholders):
-  #     # CONNECTORS_LOG_APPENDER: "Stackdriver"
-  #     # CAMUNDA_CLIENT_GRPC-ADDRESS: "camunda:26500"
-  #     # CAMUNDA_CLIENT_REST-ADDRESS: "http://camunda:8080"
-  #   ports:
-  #     - "8085:8080" # Expose connectors runtime (external 8085 -> internal 8080)
-  #   networks:
-  # - camunda-net
-
-networks:
-  camunda-net:
-    name: camunda-net
